@@ -1,0 +1,28 @@
+
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+set(AcceleratorVirtualization_VERSION "@PROJECT_VERSION@")
+set(AcceleratorVirtualization_VERSION_MAJOR "@PROJECT_VERSION_MAJOR@")
+set(AcceleratorVirtualization_VERSION_MINOR "@PROJECT_VERSION_MINOR@")
+set(AcceleratorVirtualization_VERSION_PATCH "@PROJECT_VERSION_PATCH@")
+
+# The optional CUDA adapter target links the CUDA runtime, so the consumer
+# needs the toolkit found before the exported targets are included.
+if(@AV_CUDA_INSTALLED@)
+  find_dependency(CUDAToolkit)
+endif()
+
+if(NOT TARGET AcceleratorVirtualization::av_core)
+  include("${CMAKE_CURRENT_LIST_DIR}/AcceleratorVirtualizationTargets.cmake")
+endif()
+
+set(AcceleratorVirtualization_av_core_FOUND TRUE)
+if(TARGET AcceleratorVirtualization::av_cuda)
+  set(AcceleratorVirtualization_av_cuda_FOUND TRUE)
+else()
+  set(AcceleratorVirtualization_av_cuda_FOUND FALSE)
+endif()
+
+check_required_components(AcceleratorVirtualization)

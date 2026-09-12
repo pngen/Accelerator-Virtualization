@@ -1,0 +1,46 @@
+# Build trees
+/build/
+/build-*/
+/out/
+/install/
+/prefix/
+*.dir/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+*.cmake.user
+compile_commands.json
+
+# Visual Studio / MSVC
+.vs/
+*.vcxproj
+*.vcxproj.*
+*.sln
+*.user
+
+# Binaries / objects
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.lib
+*.exp
+*.a
+*.so
+*.dylib
+
+# Test / runtime scratch
+/scratch/
+*.avs
+*.avj
+*.avstate
+*.log
+*.dmp
+/core.*
+__pycache__/
